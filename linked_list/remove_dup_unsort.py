@@ -25,5 +25,9 @@ class LinkedList:
             print(temp.data, end=" ")
             temp = temp.next
         print()
-    # print 
-        
+    
+    # remove duplicates from an unsorted list
+    def remove_dup(self):
+
+        # check if the ll is empty
+        def 
