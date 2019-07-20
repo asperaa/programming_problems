@@ -32,8 +32,7 @@ class LinkedList:
     def pair_wise(self, temp_head):
         # check if the ll has less than 2 nodes
         if temp_head is None or temp_head.next is None:
-            return temp_head
-        
+            return temp_head     
         # store the head of the ll after first two nodes of the current ll
         remaining = temp_head.next.next
         # store the new head
@@ -42,6 +41,7 @@ class LinkedList:
         temp_head.next.next = temp_head
         # recur for remaing list and change next of head
         temp_head.next = self.pair_wise(remaining)
+        # keep updating the head of the linked list in each recursive call
         self.head = new_head
         return new_head
 
