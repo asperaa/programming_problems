@@ -1,4 +1,4 @@
-"""Selection sort in a linked list"""
+"""Selection sort in a linked list (TODO: Rectify this one)"""
 class ListNode:
     def __init__(self, val):
         self.val = val
@@ -26,65 +26,73 @@ class LinkedList:
             temp = temp.next
         print()
 
-    def swap(self, prev_i, prev_min):
-        # if self.head == prev_i:
-        #     next_min = prev_min.next
-        #     head_next = self.head.next
-        #     self.head.next = next_min.next
-        #     next_min.next = head_next
-        #     prev_min.next = self.head
-        #     self.head = next_min
-        #     return
-        print("SWAP", prev_i.val, prev_min.val)
-        next_i = prev_i.next
-        next_min = prev_min.next
-        min_next_next = next_i.next
-        next_i.next = next_min.next
-        next_min.next = min_next_next
-        prev_i.next = next_min
-        prev_min.next = next_i
+    def swap(self, node_a, node_b):
+        prev_a = self.head
+        prev_b = self.head
+        print("Pairs:", node_a.val, node_b.val)
+        while prev_a and prev_a.next != node_a:
+            prev_a = prev_a.next
         
-        return 
+        while prev_b and prev_b.next != node_b:
+            prev_b = prev_b.next
+        
+        # one of the node is head node
+        if self.head == node_a:
+            # nodes are adjacnet
+            if node_a.next == node_b:
+               node_a.next = node_b.next
+               node_b.next = node_a
+               self.head = node_b
+            else:     
+                next_b = node_b.next
+                node_b.next = self.head.next
+                node_a.next = next_b
+                prev_b.next = self.head
+                self.head = node_b
+        else:
+            # nodes are adjacent
+            if node_a.next == node_b:
+                node_a.next = node_b.next
+                node_b.next = node_a
+                prev_a.next = node_b          
+            else:
+                next_a = node_a.next
+                next_b = node_b.next
+                node_a.next = next_b
+                node_b.next = next_a
+                prev_a.next = node_b
+                prev_b.next = node_a
+        
+        return
     
     def selection_sort(self):
         temp = self.head
-        prev_i = self.head
-        prev_min = self.head
-        flag = 0
+        count = 0
         while temp:
+            count += 1
             curr = temp
-            prev_i = temp
-            prev_min = temp
-            while curr and curr.next:
-                # print(curr.val, end=" ")
-                if curr.next.val < prev_min.next.val:
-                    prev_min = curr
-                    flag = 1
-                #     print("HERE")
-                    break
+            i = temp
+            minn = temp
+            while curr:
+                if curr.val < minn.val:
+                    minn = curr
                 curr = curr.next
-            if flag == 1:
-                temp = self.head
-                while temp:
-                    print(temp.val, end=" ")
-                    temp = temp.next
-                print()
-                break
-
-
-            self.swap(prev_i, prev_min)
+            print(minn.val, count)
+            print(i.val, minn.val)
+            self.swap(i, minn)
             temp = temp.next
+        print(count)
 
 if __name__ == "__main__":        
     ll = LinkedList()
-    ll.append(10)
+    ll.append(2)
     ll.append(8)
     ll.append(11)
     ll.append(3)
     ll.append(6)
 
     ll.print_list()
-    ll.swap(ll.head, ll.head.next)
+    # ll.swap(ll.head.next, ll.head.next.next.next)
     ll.print_list()
-    # ll.selection_sort()
-    # ll.print_list()
+    ll.selection_sort()
+    ll.print_list()

@@ -49,7 +49,6 @@ class LinkedList:
                 node_a.next = next_b
                 prev_b.next = self.head
                 self.head = node_b
-            return
         else:
             # nodes are adjacent
             if node_a.next == node_b:
@@ -65,7 +64,7 @@ class LinkedList:
                 prev_a.next = node_b
                 prev_b.next = node_a
 
-            return
+        return
     
 if __name__ == "__main__":
     ll = LinkedList()
@@ -76,7 +75,7 @@ if __name__ == "__main__":
     ll.append(5)
     ll.append(6)
     ll.print_list()
-    ll.swap(ll.head, ll.head.next)
+    ll.swap(ll.head.next, ll.head.next.next.next)
     ll.print_list()
 
 
