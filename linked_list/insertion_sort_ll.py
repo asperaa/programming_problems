@@ -26,35 +26,49 @@ class LinkedList:
             temp = temp.next
         print()
     
-    def sorted_insert(self, new_node):
-        if not self.head or self.head.val > new_node.val:
-            new_node.next = self.head
-            self.head = new_node
-        temp = self.head
+    def sorted_insert(self, head, new_node):
+        if head.val > new_node.val:
+            new_node.next = head
+            head = new_node
+            return head
+
+        temp = head
         while temp.next and new_node.val >= temp.next.val:
             temp = temp.next
+
         next_node = temp.next
         temp.next = new_node
         new_node.next = next_node
+        return head
 
 
-    def insertion_sort(self):
+    def insertion_sort(self, head):
         curr = self.head
         while curr:
             next_node = curr.next
-            self.sorted_insert(curr)
+            head = self.sorted_insert(head, curr)
             curr = next_node
+            print("YES")
+        return head
         
-
+        return head
 if __name__ == "__main__":
     ll = LinkedList()
-    ll.append(3)
-    ll.append(1)
+    ll.append(9)
+    ll.append(11)
     ll.append(10)
-    ll.append(5)
+    ll.append(12)
+    ll.append(10)
+    # ll.append(7)
+    # ll.append(6)
+    # ll.append(5)
     ll.print_list()
-    ll.insertion_sort()
-    ll.print_list()
+    head = ll.insertion_sort(ll.head)
+    # ll.print_list()
+    while head:
+        print(head.val, end=" ")
+        head = head.next
+    print()
 
 
 
