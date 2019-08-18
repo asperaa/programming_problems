@@ -80,7 +80,6 @@ class LinkedList:
             mid_next = slow_ptr.next
             slow_ptr.next = None
 
-
         l1 = self.merge_sort(head)
         l2 = self.merge_sort(mid_next)
         head = self.merge(l1, l2)
@@ -89,12 +88,12 @@ class LinkedList:
 if __name__ == "__main__":
     ll = LinkedList()
     ll.append(10)
-    ll.append(11)
-    ll.append(9)
-    ll.append(8)
-    ll.append(7)
-    ll.append(2)
-    ll.append(2)
+    # ll.append(11)
+    # ll.append(9)
+    # ll.append(8)
+    # ll.append(7)
+    # ll.append(2)
+    # ll.append(2)
     # ll.append(2)
 
 
