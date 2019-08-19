@@ -35,8 +35,8 @@ class LinkedList:
         end_node = None
         prev_start = None
         temp = self.head
-
         counter = 0
+        
         while m>=0:
             counter += 1
             if counter == n:
@@ -49,7 +49,7 @@ class LinkedList:
                     curr_node = next_node
                     m -= 1
                 end_node = curr_node
-
+            # keep track of the previous value
             prev_start = temp
             if temp:
                 temp = temp.next
@@ -78,5 +78,5 @@ if __name__ == "__main__":
     ll.append(7)
 
     ll.print_list()
-    ll.reverse(1, 2)
+    ll.reverse(1, 7)
     ll.print_list()
