@@ -54,6 +54,8 @@ class LinkedList:
 
     def reverse(self, head, k):
         size = self.length(head)
+        if not head or not head.next or k > size:
+            return head
         prev_node = None
         curr_node = head
         next_node = None
