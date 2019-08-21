@@ -1,4 +1,4 @@
-"""Merge 2 sorted lists"""
+"""Merge 2 sorted lists using O(n) space"""
 class ListNode:
     def __init__(self, val):
         self.val = val
