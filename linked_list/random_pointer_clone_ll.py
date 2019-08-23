@@ -29,22 +29,32 @@ class LinkedList:
         print()
     
     def random_clone(self, head):
-        clone_head = point = ListNode(0)
+        original_head = head
         store_node = dict()
-
+        
         while head:
             new_node = ListNode(head.val)
-            store_node[new_node] = head
-            point.next = new_node
-            point = point.next
+            store_node[head] = new_node
             head = head.next
-        clone_head = clone_head.next
+        
+        head = original_head
+        clone_head = None
+        while head:
+            clone_head = store_node[head]
+            if not head.next:
+                clone_head.next = None
+            else:
+                clone_head.next = store_node[head.next]
+            if not head.random:
+                clone_head.random = None
+            else:
+                clone_head.random = store_node[head.random]
+            head = head.next
+            
+        return store_node[original_head] 
 
-        clone_ptr = clone_head
-        while clone_ptr:
-            clone_ptr.random = store_node[clone_ptr].random
-            clone_ptr = clone_ptr.next
-        return clone_head
+                               
+        
             
 
 if __name__ == "__main__":
