@@ -44,14 +44,10 @@ class MinStack:
 if __name__ == "__main__":
     stack = MinStack()
     
-    stack.push(1)
-    stack.push(2)
-    stack.push(-100)
-    stack.push(0)
-    stack.push(-200)
-    stack.push(100)
-    stack.pop()
-    stack.pop()
+
+    stack.push(223423543)
+    stack.push(-2147483648)
+
     print(stack.get_min())
 
         
