@@ -32,5 +32,5 @@ def infix_to_postfix(exp):
     return result  
 
 if __name__ == "__main__":
-    exp = "(A+B/C*(D+E)-F)"
+    exp = "(A+B)*(G-F)"
     print(infix_to_postfix(exp))
