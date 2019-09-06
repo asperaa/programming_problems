@@ -11,13 +11,10 @@ def score_of_parentheses(brackets):
                     stack.append(1)
                 else:
                     collector = stack.pop()
-                    while stack and stack[-1] != "(":
+                    while stack[-1] != "(":
                         collector += stack.pop()
-                    if stack:
-                        stack.pop()
-                        stack.append(collector*2)
-                    else:
-                        stack.append(collector)
+                    stack.pop()
+                    stack.append(collector*2)
         final_score = 0
         while stack:
             final_score += stack.pop()
