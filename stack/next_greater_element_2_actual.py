@@ -15,8 +15,7 @@ def next_greater(arr):
             index -= 1
         
         index = length - 1
-        print(result)
-        print(stack)
+
         for element in arr[::-1]:
             while stack and stack[-1] <= element:
                 stack.pop()
