@@ -26,8 +26,6 @@ def largest_rectangle(arr):
         maxx = max(maxx, arr[i]*(left[i] + right[i]))
     return maxx
 
-
-
 if __name__ == "__main__":
     # arr = [2, 1, 5, 4, 2, 3, 2, 3]
     arr = [2, 1, 5, 6, 2, 3]
