@@ -13,7 +13,6 @@ def trapping_rain_water(height):
 
             width = current - stack[-1] - 1
             height_length = min(height[current], height[stack[-1]]) - height[top]
-            print(top, width, height_length, current)
             water_trap += width * height_length
         stack.append(current)
         current += 1
