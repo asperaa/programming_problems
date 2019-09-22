@@ -50,6 +50,19 @@ class LRU:
         node.prev = prev_node
         node.next = self.tail
         self.tail.prev = node
+
+if __name__ == "__main__":
+    LRU_CACHE = LRU(3)
+    print(LRU_CACHE.get(1))
+    print(LRU_CACHE.set(1, 1))
+    print(LRU_CACHE.get(1))
+    print(LRU_CACHE.set(2, 2))
+    print(LRU_CACHE.set(3, 3))
+    print(LRU_CACHE.get(3))
+    print(LRU_CACHE.set(4, 4))
+    print(LRU_CACHE.get(4))
+    print(LRU_CACHE.get(1))
+    print(LRU_CACHE.head.next.next.next.val)
     
 
 
