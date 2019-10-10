@@ -5,28 +5,28 @@ class TreeNode:
         self.left = None
         self.right = None
 
-    def bst_search(root, p, q1):
-        if root.val == p.val:
-            q1.append(root)
-            return q1
-        elif p.val < root.val:
-            q1.append(root)
-            q1 = bst_search(root.left, p, q1)
-        elif p.val > root.val:
-            q1.append(root)
-            q1 = bst_search(root.right, p, q1)
+def bst_search(root, p, q1):
+    if root.val == p.val:
+        q1.append(root)
         return q1
+    elif p.val < root.val:
+        q1.append(root)
+        q1 = bst_search(root.left, p, q1)
+    elif p.val > root.val:
+        q1.append(root)
+        q1 = bst_search(root.right, p, q1)
+    return q1
 
-    def lca_in_bst(root, p, q):
-        q1 = []
-        q2 = []
-        q1 = bst_search(root, p, q1)
-        q2 = bst_search(root, q, q2)
-        lca = root
-        for i in range(min(len(q1),len(q2))):
-            if q1[i].val == q2[i].val:
-                lca = q1[i]
-        return lca
+def lca_in_bst(root, p, q):
+    q1 = []
+    q2 = []
+    q1 = bst_search(root, p, q1)
+    q2 = bst_search(root, q, q2)
+    lca = root
+    for i in range(min(len(q1),len(q2))):
+        if q1[i].val == q2[i].val:
+            lca = q1[i]
+    return lca
 
 
 if __name__ == "__main__":
