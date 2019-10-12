@@ -1,4 +1,6 @@
 """Bottom view of the tree"""
+from collections import deque
+
 class TreeNode:
     def __init__(self, val):
         self.val = val
@@ -12,26 +14,36 @@ class BottomView:
         self.minn = 0
         self.node_hd = {}
     
-    def bottom_view_util(self, root, hd):
+    def bottom_view(self, root):
         if not root:
             return None
-        self.node_hd[root] = hd
-        self.maxx = max(self.maxx, hd)
-        self.minn = min(self.minn, hd)
-        if hd not in self.hd_dict:
-            self.hd_dict[hd] = [root.val]
-        else:
-            self.hd_dict[hd].append(root.val)
-        self.bottom_view_util(root.left, hd - 1)
-        self.bottom_view_util(root.right, hd + 1)
-    
-    def bottom_view(self, root):
-        self.bottom_view_util(root, 0)
+        
         result = []
+        queue = deque()
+   
+        queue.append(root)
+        self.node_hd[root] = 0     
+        while queue:
+            node = queue.popleft()
+
+            self.hd_dict[self.node_hd[node]] = node.val
+
+            self.maxx = max(self.maxx, self.node_hd[node])
+            self.minn = min(self.minn, self.node_hd[node])
+            
+            if node.left:
+                self.node_hd[node.left] = self.node_hd[node] - 1
+                queue.append(node.left)
+            if node.right:
+                self.node_hd[node.right] = self.node_hd[node] + 1
+                queue.append(node.right)
+        
         for i in range(self.minn, self.maxx + 1):
-            print(self.hd_dict[i])
-            result.append(self.hd_dict[i][-1])
+            result.append(self.hd_dict[i])
         return result
+
+    
+
 if __name__ == "__main__":
     root = TreeNode(1)
     root.left = TreeNode(2)
