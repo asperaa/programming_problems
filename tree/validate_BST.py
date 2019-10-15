@@ -9,7 +9,7 @@ def is_bst_util(root, lower_limit, upper_limit):
     if not root:
         return True
     val = root.val
-    if val < lower_limit or val > upper_limit:
+    if val <= lower_limit or val >= upper_limit:
         return False
     r_bst = is_bst_util(root.right, val, upper_limit)
     if not r_bst:
