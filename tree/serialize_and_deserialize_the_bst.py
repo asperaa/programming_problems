@@ -1,4 +1,4 @@
-"""Serializse and deserialize the bst"""
+"""Serializse and deserialize the bst. Space and Time - O(n)"""
 from collections import deque
 class TreeNode:
     def __init__(self, val):
@@ -34,7 +34,7 @@ def de_serialize(values):
     def helper(lower, upper):
         # second condition tells about reaching the leaf node 
         if queue and lower < queue[0] < upper:
-            value = queue.pop()
+            value = queue.popleft()
             node = TreeNode(value)
             node.left = helper(lower, value)
             node.right = helper(value, upper)
