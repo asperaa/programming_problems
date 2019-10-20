@@ -6,12 +6,15 @@ class TreeNode:
         self.right = None
     
 def invert_tree(root):
-
+    # base case of reaching the children of leaves
     if not root:
         return None
+    # temp variable to swap the left and right child of curr root
     temp = root.left
     root.left = root.right
     root.right = temp
+
+    # recursive call for updated left and right child
     invert_tree(root.left)
     invert_tree(root.right)
     return root
