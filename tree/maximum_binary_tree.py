@@ -8,18 +8,25 @@ class TreeNode:
 def max_tree(arr):
     if not arr:
         return None
-    length = len(arr)    
+    length = len(arr)  
+    # get the index of the max element in the array (pythonic)   
     max_index = arr.index(max(arr))
     maxx = max(arr)
+    # make a node out of the max element
     root = TreeNode(maxx)
+    # check whether the max element is the leftmost element of the curr array
     if max_index == 0:
         left_arr = []
     else:
+        # select the left sub-array
         left_arr = arr[0:max_index]
+    # check whether the max element is the right most element of the curr array 
     if max_index == length - 1:
         right_arr = []
     else:
+        # select the right sub-array
         right_arr = arr[max_index+1:length]
+    # make the left and right recursive calls on respective sub-arrays
     root.left = max_tree(left_arr)
     root.right = max_tree(right_arr)
     return root
