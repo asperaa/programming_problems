@@ -1,4 +1,4 @@
-"""654. Make a maximum binary tree"""
+"""654. Make a maximum binary tree. T - O(n2), S - O(n2)"""
 class TreeNode:
     def __init__(self, val):
         self.val = val
