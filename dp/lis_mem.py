@@ -4,8 +4,8 @@ def lis_util(arr, prev_index, curr_index, dp):
     if curr_index == len(arr):
         return 0
     
-    if dp[prev_index][curr_index] > -1:
-        return dp[prev_index][curr_index]
+    if dp[prev_index+1][curr_index] > -1:
+        return dp[prev_index+1][curr_index]
     
     include_curr = 0
 
