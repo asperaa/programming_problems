@@ -23,7 +23,9 @@ class Solution(object):
         return head
                    
         
-        
+    # Can use same method as the add two numbers I(reverse numbers)
+    # Caveat: Reverse both the lls. Do Add Num I stuff. 
+    # Reverse the result.
     def addTwoNumbers(self, l1, l2):
         """
         :type l1: ListNode
