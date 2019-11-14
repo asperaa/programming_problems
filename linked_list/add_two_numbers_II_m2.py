@@ -18,7 +18,7 @@ class LinkedList:
             mover = mover.next
         mover.next = new_node
         return
-
+# function to get the length of the linked list
 def get_length(ll):
     length = 0
     mover = ll
@@ -26,7 +26,8 @@ def get_length(ll):
         length += 1
         mover = mover.next
     return length
-    
+
+# function to to add leading zeroes to the shorter linked list
 def add_leading_zeroes(num, ll):
     while(num):
         new_node = ListNode(0)
@@ -35,9 +36,13 @@ def add_leading_zeroes(num, ll):
         num -= 1
     return ll
 
+
+# Use recursion to reach the end of both ll simultaneously
+# Keep the carry when you return something
 def combine_ll(head_l1, head_l2):
     if not head_l1 and not head_l2:
         return (0, None)
+    
     carry, new_node = combine_ll(head_l1.next, head_l2.next)
     sum_value = head_l1.val + head_l2.val + carry
     carry = sum_value//10
@@ -45,6 +50,7 @@ def combine_ll(head_l1, head_l2):
     curr_node.next = new_node
     return (carry, curr_node)
 
+# actually executes the combined linked list function and takes care of the last carry
 def add_two_num(l1, l2):
     length_l1, length_l2 = get_length(l1), get_length(l2)
     if length_l1 > length_l2:
