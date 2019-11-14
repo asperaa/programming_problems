@@ -18,14 +18,18 @@ class LinkedList:
             mover = mover.next
         mover.next = new_node
         return
-    
+    # Slow ptr and fast ptr approach. Same as middle of the linked list..
     def detect(self):
-        first_mover = self.head
-        second_mover  = self.head
 
-        while(first_mover and second_mover and second_mover.next):
+        first_mover = self.head # slow ptr
+        second_mover  = self.head # fast ptr
+        
+        # keep moving the slow and fast ptr
+        # when they are in the loop they will eventually meet 
+        while(second_mover and second_mover.next):
             first_mover = first_mover.next
             second_mover = second_mover.next.next
+            # condition for when the fast and slow ptr overlap
             if first_mover == second_mover:
                 return True
         return False
