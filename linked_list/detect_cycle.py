@@ -28,6 +28,9 @@ class LinkedList:
             temp = temp.next
         print()
     # function to detect the cycle
+    # use hash set to store the consective nodes
+    # if the nodes. If cycle, 
+    # then duplicate nodes are found in hash set 
     def detect(self):
         hash_set = set()
         if not self.head:
