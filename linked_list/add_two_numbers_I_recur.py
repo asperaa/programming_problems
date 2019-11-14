@@ -1,4 +1,4 @@
-"""Add two numbers as linked list """
+"""Add two numbers as linked list I """
 class Node:
     def __init__(self, data):
         self.data = data
@@ -26,19 +26,28 @@ class LinkedList:
             temp = temp.next
         print()
         return
-    
+    # can solve using recusion.
+    # Go till the end for longer one. Keep adding Zero valued node for shorter one
+    #Keep adding nodes if there is a carry left
     def add_two(self, l1, l2, c=0):
         val = l1.data + l2.data + c
-        # print(l1.data, l2.data, val/10)
+
         c = val//10
         ret_node = Node(val%10)
 
         if (l1.next != None or l2.next != None or c != 0):
+            # add zero node if l1 is short
             if l1.next == None:
                 l1.next = Node(0)
+
+            # add zero node if l2 is short   
             if l2.next == None:
                 l2.next = Node(0)
+            
+            # assign the next val using recusion
             ret_node.next = self.add_two(l1.next, l2.next, c)
+        
+        # return call is important
         return ret_node
 
 if __name__ == "__main__":
