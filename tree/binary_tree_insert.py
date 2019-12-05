@@ -13,21 +13,27 @@ def insert_node(root, data):
     tree_node = TreeNode(data)
 
     queue = []
+    # initialise the queue for bfs (with root node) [not the val of root]
     queue.append(root)
-
+    
+    # start the bfs
     while(len(queue)):
-
+        # pop node from front of queue and explore left and right neighbours of the node
         node = queue.pop(0)
 
+        # if the left neighbour is null, then add the node there   
         if node.left is None:
             node.left = tree_node
             break
+        # or else continue the adding neighbours in the queue for bfs
         else:
             queue.append(node.left)
         
+        # if the right neighbour is null, then add the node there
         if node.right is None:
             node.right = tree_node
             break
+        # or else continue the adding of neighbours in the queue for bfs
         else:
             queue.append(node.right)
 
