@@ -9,23 +9,36 @@ class Node:
 
 # function for inorder traversal
 def in_order(root):
-
+    
+    # check whether root is None in each recurive call
     if root:
+        # recurisive call to the left sub-tree
         in_order(root.left)
+
+        # print the current key
         print(root.key, end=" ")
+
+        # recursive call to the right sub-tree
         in_order(root.right)
 
 # function for pre_order traversal
 def pre_order(root):
-
+    # check whether root is None in each recursive call
     if root:
+        # print the current key first, then recusive call to the left tree
         print(root.key, end=" ")
+        
         pre_order(root.left)
+        
+        # recursive call to the right tree
         pre_order(root.right)
 
 # function for post_order traversal
 def post_order(root):
+    # check whether root is None in each recursive call
     if root:
+        # recur to the left sub tree, the recur to the right sub tree
+        # then print current sub tree
         post_order(root.left)
         post_order(root.right)
         print(root.key, end=" ")
