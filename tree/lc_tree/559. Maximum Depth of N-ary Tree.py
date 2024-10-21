@@ -16,7 +16,7 @@ class Solution:
         while stack:
             node, level = stack.pop()
             max_depth = max(max_depth, level)
-            for child in node.children:
-                stack.append((child, level + 1))
-                
+            if node:
+                for child in node.children:
+                    stack.append((child, level + 1))
         return max_depth
