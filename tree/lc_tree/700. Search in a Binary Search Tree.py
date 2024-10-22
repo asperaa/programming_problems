@@ -6,20 +6,19 @@
 #         self.right = right
 class Solution:
     
-    def search_bst_helper(self, root, val, subtree_root):
+    def bst_search_helper(self, root, val):
         if not root:
-            return
-        if val < root.val:
-            self.search_bst_helper(root.left, val, subtree_root)
-        elif val > root.val:
-            self.search_bst_helper(root.right, val, subtree_root)
-        else:
+            return None
+        if val > root.val:
+            subtree_root = self.bst_search_helper(root.right, val)
+        elif val < root.val:
+            subtree_root = self.bst_search_helper(root.left, val)
+        elif val == root.val:
             subtree_root = root
-            return
+        return subtree_root
+
     
     
     def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
-        self.subtree_root = None
-        self.search_bst_helper(root, val, self.subtree_root)
-        return self.subtree_root
-        
+        subtree = self.bst_search_helper(root, val)
+        return subtree
